@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
   
-  validates :username, uniqueness: true, null: false
+  validates :username, uniqueness: true, null: false, length: { minimum: 2 }
 
   has_many :follower_records, class_name: 'Follow', foreign_key: 'following_id'
   has_many :followers, through: :follower_records
