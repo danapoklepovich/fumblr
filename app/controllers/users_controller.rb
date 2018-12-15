@@ -7,6 +7,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def dashboard
+    @user = current_user
+    @followers = @user.followers
+    @followings = @user.followings
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
