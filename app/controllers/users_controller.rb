@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show]
+  before_action :set_user, only: [:show, :follow]
 
   # GET /users
   # GET /users.json
@@ -15,12 +15,18 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show; end
+  def show
+    @followers = @user.followers
+    @followings = @user.followings
+  end
+
+  def follow
+    @user.followers << current_user
+    redirect_to user_path(username: @user.username)
+  end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
-  end
+    def set_user
+      @user = User.find_by(username: params[:username])
+    end
 end
