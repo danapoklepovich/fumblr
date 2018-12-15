@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   get 'home/index'
+  get 'dashboard', to: 'users#dashboard'
 
   resources :posts
   resources :users, only: [:show, :index]
