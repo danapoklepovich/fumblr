@@ -10,8 +10,13 @@
 
 <p>
   <strong>Avatar url:</strong>
-  <%= @user.avatar_url %>
+  <%= image_tag @user.avatar_url %>
 </p>
+
+<p>
+  <%= image_tag @user.avatar.variant(resize: "200x200") %>
+</p>
+
 <h2>Followers</h2>
 <% @followers.each do |follower| %>
   <%= follower.username || follower.id %>
