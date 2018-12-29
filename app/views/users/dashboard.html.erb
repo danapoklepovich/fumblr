@@ -1,10 +1,6 @@
 <%= link_to 'Account Settings', edit_user_registration_path %>
 <h1>Dashboard</h1>
 <h2>Followers</h2>
-<% @followers.each do |follower| %>
-  <%= follower.username || follower.id %>
-<% end %>
+<%= render 'display_users', users: @followers %>
 <h2>Followings</h2>
-<% @followings.each do |following| %>
-  <%= following.username || following.id %>
-<% end %>
+<%= render 'display_users', users: @followings %>

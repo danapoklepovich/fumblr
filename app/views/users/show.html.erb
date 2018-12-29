@@ -14,16 +14,16 @@
 </p>
 
 <p>
-  <%= image_tag @user.avatar.variant(resize: "200x200") %>
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar.variant(resize: "200x200") %>
+  <% else %>
+    <p>User does not have an avatar</p>
+  <% end %>
 </p>
 
 <h2>Followers</h2>
-<% @followers.each do |follower| %>
-  <%= follower.username || follower.id %>
-<% end %>
+<%= render 'display_users', users: @followers %>
 <h2>Followings</h2>
-<% @followings.each do |following| %>
-  <%= following.username || following.id %>
-<% end %>
+<%= render 'display_users', users: @followings %>
 
 <%= link_to 'Follow', follow_path(username: @user.username), method: :post %>
