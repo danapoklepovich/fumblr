@@ -4,3 +4,4 @@
 <%= render 'display_users', users: @followers %>
 <h2>Followings</h2>
 <%= render 'display_users', users: @followings %>
+<%= link_to 'My Profile', user_path(username: current_user.username) %>

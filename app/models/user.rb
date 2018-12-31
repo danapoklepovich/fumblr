@@ -13,4 +13,7 @@ class User < ApplicationRecord
   has_many :followings, through: :following_records
 
   has_one_attached :avatar
+
+  has_many :user_posts
+  has_many :posts, through: :user_posts
 end

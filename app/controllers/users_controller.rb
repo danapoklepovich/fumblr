@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show
     @followers = @user.followers
     @followings = @user.followings
+    @post = Post.new
   end
 
   def follow

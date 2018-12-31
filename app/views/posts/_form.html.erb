@@ -12,14 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :type %>
-    <%= form.number_field :type, id: :post_type %>
+    <%= form.label :format %>
+    <%= form.select(:format, Post.formats.keys) %>
   </div>
 
   <div class="field">
     <%= form.label :data %>
     <%= form.text_field :data, id: :post_data %>
   </div>
+      
+  <%= form.hidden_field :username, value: @user.username %>
 
   <div class="actions">
     <%= form.submit %>
